@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSV Data Analyzer</h1>
+        </header>
+        
+        <main>
+            <section id="uploadSection">
+                <h2>Upload Your CSV File</h2>
+                <input type="file" id="csvFileInput" accept=".csv">
+                <label for="csvFileInput" class="file-upload-btn">Choose File</label>
+            </section>
+
+            <section id="dataSection" class="hidden">
+                <div id="filterSection">
+                    <h2>Filters</h2>
+                    <div id="filterInputs" class="filter-grid"></div>
+                    <div class="filter-actions">
+                        <button id="applyFiltersBtn">Apply Filters</button>
+                        <button id="downloadFilteredDataBtn">Download Filtered Data</button>
+                        <button id="uploadNewFileBtn">Upload New File</button>
+                    </div>
+                </div>
+
+                <div id="tableContainer">
+                    <table id="dataTable"></table>
+                </div>
+
+                <div id="paginationControls" class="pagination">
+                    <button id="prevPageBtn">Previous</button>
+                    <span id="currentPageLabel"></span>
+                    <button id="nextPageBtn">Next</button>
+                </div>
+            </section>
+        </main>
+
+        <div id="messageBox" class="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
