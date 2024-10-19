@@ -3,41 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Data Analyzer</title>
+    <title>CSV Data Visualizer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>CSV Data Analyzer</h1>
+            <h1>CSV Data Visualizer</h1>
         </header>
-        
+
         <main>
-            <section id="uploadSection">
+            <section id="uploadSection" class="section">
                 <h2>Upload Your CSV File</h2>
-                <input type="file" id="csvFileInput" accept=".csv">
+                <input type="file" id="csvFileInput" accept=".csv" />
                 <label for="csvFileInput" class="file-upload-btn">Choose File</label>
             </section>
 
-            <section id="dataSection" class="hidden">
+            <section id="dataSection" class="section hidden">
                 <div id="filterSection">
                     <h2>Filters</h2>
                     <div id="filterInputs" class="filter-grid"></div>
                     <div class="filter-actions">
-                        <button id="applyFiltersBtn">Apply Filters</button>
-                        <button id="downloadFilteredDataBtn">Download Filtered Data</button>
+                        <div class="download-options">
+                            <button id="downloadFilteredDataBtn">Download Filtered Data</button>
+                            <select id="exportFormat">
+                                <option value="csv">CSV</option>
+                                <option value="xlsx">Excel (XLSX)</option>
+                                <option value="json">JSON</option>
+                            </select>
+                        </div>
                         <button id="uploadNewFileBtn">Upload New File</button>
                     </div>
                 </div>
 
-                <div id="tableContainer">
-                    <table id="dataTable"></table>
+                <div id="searchSection">
+                    <input type="text" id="globalSearch" placeholder="Global Search..." />
                 </div>
+
+                <div id="columnToggle">
+                    <button id="toggleColumnsBtn">Toggle Columns</button>
+                    <div id="columnList" class="hidden"></div>
+                </div>
+
+                <div id="tableContainer"></div>
 
                 <div id="paginationControls" class="pagination">
                     <button id="prevPageBtn">Previous</button>
                     <span id="currentPageLabel"></span>
                     <button id="nextPageBtn">Next</button>
+                </div>
+
+                <div id="chartContainer">
+                    <canvas id="dataChart"></canvas>
                 </div>
             </section>
         </main>
@@ -45,6 +62,9 @@
         <div id="messageBox" class="message"></div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
